@@ -9,7 +9,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     :root {
       --serif: 'Source Serif 4', Georgia, serif;
       --sans: 'IBM Plex Sans', system-ui, sans-serif;
@@ -30,323 +29,110 @@
       --green-light: #eaf5ec;
       --gray-light: #f0eeea;
     }
-
     html { font-size: 15px; }
-    body {
-      font-family: var(--sans);
-      color: var(--text);
-      background: var(--bg);
-      line-height: 1.65;
-    }
-
+    body { font-family: var(--sans); color: var(--text); background: var(--bg); line-height: 1.65; }
     a { color: var(--accent); text-decoration: none; }
     a:hover { text-decoration: underline; }
+    .page { max-width: 1060px; margin: 0 auto; padding: 0 2rem 4rem; }
 
-    /* ── Layout ── */
-    .page { max-width: 1020px; margin: 0 auto; padding: 0 2rem 4rem; }
-
-    /* ── Header ── */
-    .site-header {
-      border-bottom: 1px solid var(--border);
-      padding: 2rem 0 0;
-      margin-bottom: 0;
-    }
-    .header-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      gap: 1rem;
-      flex-wrap: wrap;
-      margin-bottom: 1rem;
-    }
-    .course-id {
-      font-family: var(--mono);
-      font-size: 12px;
-      color: var(--text-faint);
-      letter-spacing: 0.06em;
-      margin-bottom: 4px;
-    }
-    .course-title {
-      font-family: var(--serif);
-      font-size: 28px;
-      font-weight: 600;
-      line-height: 1.2;
-      color: var(--text);
-    }
-    .course-meta {
-      font-size: 13px;
-      color: var(--text-muted);
-      margin-top: 6px;
-    }
+    .site-header { border-bottom: 1px solid var(--border); padding: 2rem 0 0; }
+    .header-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; flex-wrap: wrap; margin-bottom: 1rem; }
+    .course-id { font-family: var(--mono); font-size: 12px; color: var(--text-faint); letter-spacing: 0.06em; margin-bottom: 4px; }
+    .course-title { font-family: var(--serif); font-size: 28px; font-weight: 600; line-height: 1.2; }
+    .course-meta { font-size: 13px; color: var(--text-muted); margin-top: 6px; }
     .course-meta span { margin-right: 1.2rem; }
-    .ucsd-badge {
-      font-family: var(--mono);
-      font-size: 11px;
-      padding: 4px 10px;
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      color: var(--text-muted);
-      white-space: nowrap;
-      align-self: flex-start;
-    }
+    .ucsd-badge { font-family: var(--mono); font-size: 11px; padding: 4px 10px; border: 1px solid var(--border); border-radius: 4px; color: var(--text-muted); white-space: nowrap; align-self: flex-start; }
 
-    /* ── Nav ── */
-    .nav {
-      display: flex;
-      gap: 0;
-      margin-top: 0;
-    }
-    .nav-btn {
-      font-family: var(--sans);
-      font-size: 13.5px;
-      font-weight: 400;
-      color: var(--text-muted);
-      background: none;
-      border: none;
-      border-bottom: 2px solid transparent;
-      padding: 10px 16px 10px 0;
-      margin-right: 8px;
-      cursor: pointer;
-      transition: color 0.15s;
-    }
+    .nav { display: flex; }
+    .nav-btn { font-family: var(--sans); font-size: 13.5px; color: var(--text-muted); background: none; border: none; border-bottom: 2px solid transparent; padding: 10px 16px 10px 0; margin-right: 8px; cursor: pointer; }
     .nav-btn:hover { color: var(--text); }
-    .nav-btn.active {
-      color: var(--text);
-      border-bottom: 2px solid var(--text);
-      font-weight: 500;
-    }
+    .nav-btn.active { color: var(--text); border-bottom: 2px solid var(--text); font-weight: 500; }
 
-    /* ── Tab panels ── */
     .tab { display: none; padding-top: 1.75rem; }
     .tab.active { display: block; }
 
-    /* ── Two-col layout ── */
-    .two-col {
-      display: grid;
-      grid-template-columns: 1fr 270px;
-      gap: 2.5rem;
-      align-items: start;
-    }
-    @media (max-width: 720px) {
-      .two-col { grid-template-columns: 1fr; }
-    }
+    .two-col { display: grid; grid-template-columns: 1fr 270px; gap: 2.5rem; align-items: start; }
+    @media (max-width: 740px) { .two-col { grid-template-columns: 1fr; } }
 
-    /* ── Sidebar cards ── */
     .sidebar { display: flex; flex-direction: column; gap: 12px; }
-    .s-card {
-      border: 1px solid var(--border-light);
-      border-radius: 6px;
-      overflow: hidden;
-      background: var(--bg-card);
-    }
-    .s-card-head {
-      background: var(--bg-surface);
-      padding: 6px 14px;
-      font-family: var(--mono);
-      font-size: 10.5px;
-      letter-spacing: 0.08em;
-      color: var(--text-faint);
-      text-transform: uppercase;
-      border-bottom: 1px solid var(--border-light);
-    }
+    .s-card { border: 1px solid var(--border-light); border-radius: 6px; overflow: hidden; background: var(--bg-card); }
+    .s-card-head { background: var(--bg-surface); padding: 6px 14px; font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.08em; color: var(--text-faint); text-transform: uppercase; border-bottom: 1px solid var(--border-light); }
     .s-card-body { padding: 12px 14px; font-size: 13px; }
     .s-card-body p { margin-bottom: 7px; }
     .s-card-body p:last-child { margin-bottom: 0; }
-
     .kv { display: grid; grid-template-columns: auto 1fr; gap: 3px 14px; font-size: 13px; }
     .kv .k { color: var(--text-muted); white-space: nowrap; }
 
-    /* ── Prose ── */
     .prose p { font-size: 14px; margin-bottom: 1rem; }
     .prose p:last-child { margin-bottom: 0; }
     .prose strong { font-weight: 500; }
+    .prose ul { font-size: 14px; margin: 0.5rem 0 1rem 1.25rem; }
+    .prose ul li { margin-bottom: 0.3rem; }
+    .notice { background: var(--bg-surface); border-left: 3px solid var(--border); padding: 10px 14px; font-size: 13px; color: var(--text-muted); border-radius: 0 4px 4px 0; margin: 1rem 0; }
+    .disclaimer { background: var(--amber-light); border-left: 3px solid #d4a74a; padding: 10px 14px; font-size: 13px; color: var(--amber); border-radius: 0 4px 4px 0; margin-bottom: 1.25rem; }
 
-    .notice {
-      background: var(--bg-surface);
-      border-left: 3px solid var(--border);
-      padding: 10px 14px;
-      font-size: 13px;
-      color: var(--text-muted);
-      border-radius: 0 4px 4px 0;
-      margin: 1rem 0;
-    }
+    .sec-title { font-family: var(--serif); font-size: 17px; font-weight: 600; border-bottom: 1px solid var(--border-light); padding-bottom: 6px; margin-bottom: 1rem; }
 
-    /* ── Section titles ── */
-    .sec-title {
-      font-family: var(--serif);
-      font-size: 17px;
-      font-weight: 600;
-      border-bottom: 1px solid var(--border-light);
-      padding-bottom: 6px;
-      margin-bottom: 1rem;
-      color: var(--text);
-    }
-
-    /* ── Schedule table ── */
     .sched-wrap { overflow-x: auto; }
-    table.sched {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 13px;
-    }
-    table.sched th {
-      text-align: left;
-      padding: 6px 10px;
-      font-family: var(--mono);
-      font-size: 10.5px;
-      letter-spacing: 0.06em;
-      color: var(--text-faint);
-      text-transform: uppercase;
-      background: var(--bg-surface);
-      border-bottom: 1px solid var(--border);
-      white-space: nowrap;
-    }
-    table.sched td {
-      padding: 7px 10px;
-      border-bottom: 1px solid var(--border-light);
-      vertical-align: top;
-    }
+    table.sched { width: 100%; border-collapse: collapse; font-size: 13px; }
+    table.sched th { text-align: left; padding: 6px 10px; font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.06em; color: var(--text-faint); text-transform: uppercase; background: var(--bg-surface); border-bottom: 1px solid var(--border); white-space: nowrap; }
+    table.sched td { padding: 7px 10px; border-bottom: 1px solid var(--border-light); vertical-align: top; line-height: 1.5; }
     table.sched tr:last-child td { border-bottom: none; }
-    table.sched tr.week-row td {
-      background: var(--bg-surface);
-      font-family: var(--mono);
-      font-size: 10.5px;
-      letter-spacing: 0.06em;
-      color: var(--text-faint);
-      text-transform: uppercase;
-      padding: 4px 10px;
-      border-bottom: 1px solid var(--border-light);
-    }
-    table.sched tr.exam-row td { background: #fefaf3; }
+    table.sched tr.part-row td { background: #1a4a8a; color: #fff; font-weight: 500; font-size: 13px; padding: 8px 12px; }
+    table.sched tr.part-row td a { color: #aac8f0; }
+    table.sched tr.part-row td a:hover { color: #fff; }
+    table.sched tr.exam-row td { background: var(--amber-light); }
     table.sched tr.holiday-row td { background: var(--bg-surface); color: var(--text-muted); }
-    table.sched .lec-num {
-      font-family: var(--mono);
-      font-size: 12px;
-      color: var(--text-faint);
-    }
-
-    /* ── Badges ── */
-    .badge {
-      display: inline-block;
-      font-size: 11px;
-      font-family: var(--mono);
-      padding: 2px 8px;
-      border-radius: 3px;
-      white-space: nowrap;
-    }
+    table.sched tr.review-row td { background: var(--green-light); }
+    .lec-num { font-family: var(--mono); font-size: 12px; color: var(--text-faint); white-space: nowrap; }
+    .topic-main { font-size: 13px; }
+    .topic-sub { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+    .slide-links { display: flex; flex-wrap: wrap; gap: 5px; align-items: center; }
+    .slide-links a { font-family: var(--mono); font-size: 11px; color: var(--accent); background: var(--accent-light); padding: 2px 7px; border-radius: 3px; white-space: nowrap; }
+    .slide-links a:hover { text-decoration: none; background: #d0e2f7; }
+    .slide-links a.annot { background: var(--green-light); color: var(--green); }
+    .slide-links a.annot:hover { background: #d0ead4; }
+    .badge { display: inline-block; font-size: 11px; font-family: var(--mono); padding: 2px 8px; border-radius: 3px; white-space: nowrap; }
     .badge-hw   { background: var(--accent-light); color: var(--accent); }
-    .badge-exam { background: var(--amber-light);  color: var(--amber); }
-    .badge-hol  { background: var(--gray-light);   color: var(--text-muted); }
-    .badge-out  { background: var(--green-light);  color: var(--green); }
+    .badge-exam { background: var(--amber-light); color: var(--amber); }
+    .badge-hol  { background: var(--gray-light); color: var(--text-muted); }
+    .badge-out  { background: var(--green-light); color: var(--green); }
+    .reading { font-size: 12px; color: var(--text-muted); line-height: 1.5; }
+    .reading .deep { color: var(--text); }
 
-    /* ── Syllabus table ── */
-    table.syl {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 13.5px;
-      margin-top: 0.5rem;
-    }
-    table.syl th {
-      text-align: left;
-      padding: 7px 12px;
-      font-weight: 500;
-      font-size: 12px;
-      font-family: var(--mono);
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      color: var(--text-faint);
-      background: var(--bg-surface);
-      border-bottom: 1px solid var(--border);
-    }
-    table.syl td {
-      padding: 8px 12px;
-      border-bottom: 1px solid var(--border-light);
-      font-size: 13px;
-      vertical-align: top;
-    }
+    table.syl { width: 100%; border-collapse: collapse; }
+    table.syl th { text-align: left; padding: 7px 12px; font-family: var(--mono); font-size: 11px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--text-faint); background: var(--bg-surface); border-bottom: 1px solid var(--border); }
+    table.syl td { padding: 8px 12px; border-bottom: 1px solid var(--border-light); font-size: 13px; vertical-align: top; }
     table.syl tr:last-child td { border-bottom: none; }
 
-    /* ── Assignments ── */
+    table.grades { width: 100%; border-collapse: collapse; font-size: 12px; margin-top: 0.5rem; }
+    table.grades th, table.grades td { padding: 5px 6px; border: 1px solid var(--border-light); text-align: center; font-family: var(--mono); font-size: 11px; }
+    table.grades th { background: var(--bg-surface); color: var(--text-muted); }
+
     .hw-list { display: flex; flex-direction: column; gap: 8px; }
-    .hw-item {
-      border: 1px solid var(--border-light);
-      border-radius: 6px;
-      padding: 12px 16px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      background: var(--bg-card);
-      gap: 1rem;
-    }
+    .hw-item { border: 1px solid var(--border-light); border-radius: 6px; padding: 12px 16px; display: flex; align-items: center; justify-content: space-between; background: var(--bg-card); gap: 1rem; }
     .hw-title { font-weight: 500; font-size: 14px; }
     .hw-meta { font-size: 12px; color: var(--text-muted); margin-top: 2px; font-family: var(--mono); }
-    .hw-right { text-align: right; flex-shrink: 0; }
 
-    /* ── Staff grid ── */
-    .staff-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
-      gap: 12px;
-    }
-    .staff-card {
-      border: 1px solid var(--border-light);
-      border-radius: 6px;
-      padding: 16px;
-      background: var(--bg-card);
-      font-size: 13px;
-    }
-    .avatar {
-      width: 44px; height: 44px; border-radius: 50%;
-      background: var(--accent-light);
-      color: var(--accent);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 14px; font-weight: 500;
-      margin-bottom: 10px;
-      font-family: var(--mono);
-    }
+    .staff-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 12px; }
+    .staff-card { border: 1px solid var(--border-light); border-radius: 6px; padding: 16px; background: var(--bg-card); font-size: 13px; }
+    .avatar { width: 44px; height: 44px; border-radius: 50%; background: var(--accent-light); color: var(--accent); display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 500; margin-bottom: 10px; font-family: var(--mono); }
     .staff-name { font-weight: 500; font-size: 14px; margin-bottom: 2px; }
     .staff-role { color: var(--text-muted); font-size: 12px; margin-bottom: 8px; }
     .staff-detail { color: var(--text-muted); font-size: 12px; margin-bottom: 3px; }
 
-    /* ── OH table ── */
-    table.oh {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 13px;
-      margin-top: 0.75rem;
-    }
-    table.oh th {
-      text-align: left;
-      padding: 6px 10px;
-      font-family: var(--mono);
-      font-size: 10.5px;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: var(--text-faint);
-      background: var(--bg-surface);
-      border-bottom: 1px solid var(--border);
-    }
-    table.oh td {
-      padding: 7px 10px;
-      border-bottom: 1px solid var(--border-light);
-    }
+    table.oh { width: 100%; border-collapse: collapse; font-size: 13px; margin-top: 0.75rem; }
+    table.oh th { text-align: left; padding: 6px 10px; font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-faint); background: var(--bg-surface); border-bottom: 1px solid var(--border); }
+    table.oh td { padding: 7px 10px; border-bottom: 1px solid var(--border-light); }
     table.oh tr:last-child td { border-bottom: none; }
 
-    /* ── Footer ── */
-    .site-footer {
-      margin-top: 3rem;
-      padding-top: 1.5rem;
-      border-top: 1px solid var(--border-light);
-      font-size: 12px;
-      color: var(--text-faint);
-      font-family: var(--mono);
-    }
+    .site-footer { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--border-light); font-size: 12px; color: var(--text-faint); font-family: var(--mono); }
+    .cc-note { margin-top: 5px; font-size: 11px; }
   </style>
 </head>
 <body>
 <div class="page">
 
-  <!-- HEADER -->
   <header class="site-header">
     <div class="header-top">
       <div>
@@ -369,58 +155,54 @@
     </nav>
   </header>
 
-  <!-- ══════════════ OVERVIEW ══════════════ -->
+  <!-- OVERVIEW -->
   <section id="overview" class="tab active">
     <div class="two-col">
       <div>
         <div class="prose">
-          <p>This course covers the fundamentals of modern computer architecture, from instruction-set design and pipelining to the memory hierarchy and I/O. We study how hardware and software interact and learn to reason about performance, correctness, and design tradeoffs across the stack.</p>
-          <p>By the end of the quarter, you will understand how real processors are built — including the microarchitectural techniques that power the CPUs and accelerators driving today's systems.</p>
-          <p><strong>Prerequisites:</strong> CSE 110 or equivalent. Familiarity with C/C++ and basic digital logic is helpful but not required.</p>
-          <p><strong>Discussion sections</strong> meet weekly. Attendance is strongly encouraged — worked problems and exam review material are covered in section and are not repeated in lecture.</p>
+          <p>This course covers the basics of modern processor design and operation. Topics include instruction set architectures, computer system performance, machine organization, pipelining, branch prediction, memory-hierarchy design, and an introduction to multiprocessor considerations.</p>
+          <p>This course is designed to run alongside CSE 141L. We expect that you are enrolled in both.</p>
+          <p><strong>Prerequisites:</strong> CSE 110 or equivalent. Familiarity with C/C++ and basic digital logic is helpful.</p>
         </div>
-
         <div class="notice">
-          Lecture slides and readings are posted to this page the evening before each class. Assignments are submitted through <a href="#">Gradescope</a>. Course announcements are on <a href="#">Piazza</a>.
+          Lecture slides and readings are posted to the <strong>Schedule</strong> tab before each class. Assignments submitted through <a href="#">Gradescope</a> (via Canvas). Q&amp;A on <a href="#">Piazza</a>. Office hours on <a href="#">Canvas</a>.
         </div>
-
-        <div class="prose" style="margin-top:1rem;">
-          <p><strong>Textbook:</strong> <em>Computer Organization and Design: ARM Edition</em>, Patterson &amp; Hennessy. Readings are listed in the schedule. A limited number of copies are on 2-hour reserve at Geisel Library.</p>
+        <div class="prose">
+          <p><strong>Textbook:</strong> <em>Computer Organization and Design MIPS Edition</em>, 5th Ed. (Patterson &amp; Hennessy). ISBN-13: 978-0124077263. Required.</p>
+          <p><strong>Other recommended reading:</strong></p>
+          <ul>
+            <li>Hennessy &amp; Patterson, <em>Computer Architecture: A Quantitative Approach</em> — more advanced, broader coverage.</li>
+            <li><a href="https://www.morganclaypool.com/toc/cac/1/1">Synthesis Lectures on Computer Architecture</a> — outstanding recent books on processor microarchitecture, memory, and more; free on the UCSD network.</li>
+          </ul>
         </div>
       </div>
-
       <div class="sidebar">
         <div class="s-card">
           <div class="s-card-head">Key dates</div>
           <div class="s-card-body">
             <div class="kv">
-              <span class="k">Midterm 1</span><span>Fri Apr 25</span>
-              <span class="k">Midterm 2</span><span>Fri May 23</span>
-              <span class="k">Final exam</span><span>Sat Jun 14, 11:30am</span>
-              <span class="k">No class</span><span>Mon May 26 (Memorial Day)</span>
+              <span class="k">Midterm</span><span>Fri May 9, in class</span>
+              <span class="k">Final</span><span>Sat Jun 14, 11:30am</span>
+              <span class="k">No class</span><span>Mon May 26</span>
             </div>
           </div>
         </div>
-
         <div class="s-card">
           <div class="s-card-head">Links</div>
           <div class="s-card-body">
             <p><a href="#">Piazza (Q&amp;A)</a></p>
             <p><a href="#">Gradescope (submissions)</a></p>
-            <p><a href="#">Canvas (grades)</a></p>
-            <p><a href="#">EdStem (office hours queue)</a></p>
+            <p><a href="#">Canvas (grades &amp; quizzes)</a></p>
           </div>
         </div>
-
         <div class="s-card">
           <div class="s-card-head">Grading</div>
           <div class="s-card-body">
             <div class="kv">
-              <span class="k">Homeworks (×4)</span><span>25%</span>
-              <span class="k">Midterm 1</span><span>20%</span>
-              <span class="k">Midterm 2</span><span>20%</span>
-              <span class="k">Final</span><span>30%</span>
-              <span class="k">Participation</span><span>5%</span>
+              <span class="k">Mini-quizzes</span><span>5%</span>
+              <span class="k">Homework (~7–8)</span><span>20%</span>
+              <span class="k">Midterm</span><span>30%</span>
+              <span class="k">Final</span><span>45%</span>
             </div>
           </div>
         </div>
@@ -428,198 +210,448 @@
     </div>
   </section>
 
-  <!-- ══════════════ SCHEDULE ══════════════ -->
+  <!-- SCHEDULE -->
   <section id="schedule" class="tab">
-    <p style="font-size:13px; color:#888; margin-bottom:1rem;">Readings refer to chapters in Patterson &amp; Hennessy (ARM Edition). Slides posted the evening before class.</p>
+    <div class="prose" style="margin-bottom:1rem;">
+      <p>Completing the pre-class reading before each lecture is strongly recommended. <strong>Bold</strong> = read carefully; plain = skim is fine. Bonus materials are optional and will not appear on any exam.</p>
+      <p>Slides are from Prof. Pat Pannuto's Fall 2020 offering. Green <span style="font-family:var(--mono);font-size:12px;background:var(--green-light);color:var(--green);padding:1px 6px;border-radius:3px;">annotated</span> slides are posted after each lecture.</p>
+    </div>
     <div class="sched-wrap">
     <table class="sched">
       <thead>
         <tr>
-          <th style="width:92px;">Date</th>
-          <th style="width:48px;">Lec</th>
+          <th style="width:90px;">Date</th>
+          <th style="width:40px;">Lec</th>
           <th>Topic</th>
-          <th style="width:110px;">Reading</th>
-          <th style="width:140px;">Materials</th>
+          <th style="width:200px;">Pre-class reading</th>
+          <th style="width:160px;">Materials</th>
         </tr>
       </thead>
       <tbody>
-        <!-- Week 1 -->
-        <tr class="week-row"><td colspan="5">Week 1 — Introduction &amp; ISA basics</td></tr>
-        <tr><td>Mon Apr 7</td><td class="lec-num">1</td><td>Course overview; what is computer architecture?</td><td>P&amp;H §1.1–1.3</td><td><a href="#">slides</a></td></tr>
-        <tr><td>Wed Apr 9</td><td class="lec-num">2</td><td>ISA design; ARMv8 overview</td><td>P&amp;H §2.1–2.3</td><td><a href="#">slides</a></td></tr>
-        <tr><td>Fri Apr 11</td><td class="lec-num">3</td><td>Arithmetic &amp; logic instructions</td><td>P&amp;H §2.4–2.6</td><td><a href="#">slides</a></td></tr>
-        <!-- Week 2 -->
-        <tr class="week-row"><td colspan="5">Week 2 — Instruction encoding &amp; control flow</td></tr>
-        <tr><td>Mon Apr 14</td><td class="lec-num">4</td><td>Data transfer; memory addressing modes</td><td>P&amp;H §2.7–2.9</td><td><a href="#">slides</a></td></tr>
-        <tr><td>Wed Apr 16</td><td class="lec-num">5</td><td>Branches &amp; control flow</td><td>P&amp;H §2.10–2.12</td><td><a href="#">slides</a></td></tr>
-        <tr><td>Fri Apr 18</td><td class="lec-num">6</td><td>Procedure calls; stack discipline</td><td>P&amp;H §2.13–2.15</td><td><span class="badge badge-hw">HW 1 out</span></td></tr>
-        <!-- Week 3 -->
-        <tr class="week-row"><td colspan="5">Week 3 — Arithmetic &amp; ALU design</td></tr>
-        <tr><td>Mon Apr 21</td><td class="lec-num">7</td><td>Integer arithmetic; ripple-carry adder</td><td>P&amp;H §3.1–3.2</td><td><a href="#">slides</a></td></tr>
-        <tr><td>Wed Apr 23</td><td class="lec-num">8</td><td>Carry lookahead; multiplication &amp; division</td><td>P&amp;H §3.3–3.5</td><td><a href="#">slides</a></td></tr>
-        <tr class="exam-row"><td>Fri Apr 25</td><td class="lec-num">—</td><td><strong>Midterm 1</strong> — covers weeks 1–3</td><td>—</td><td><span class="badge badge-exam">Exam</span></td></tr>
-        <!-- Week 4 -->
-        <tr class="week-row"><td colspan="5">Week 4 — Single-cycle datapath</td></tr>
-        <tr><td>Mon Apr 28</td><td class="lec-num">9</td><td>Building a single-cycle processor</td><td>P&amp;H §4.1–4.3</td><td><span class="badge badge-hw">HW 1 due</span></td></tr>
-        <tr><td>Wed Apr 30</td><td class="lec-num">10</td><td>Control unit design</td><td>P&amp;H §4.4</td><td><a href="#">slides</a></td></tr>
-        <tr><td>Fri May 2</td><td class="lec-num">11</td><td>ALU control; datapath extensions</td><td>P&amp;H §4.5</td><td><span class="badge badge-hw">HW 2 out</span></td></tr>
-        <!-- Week 5 -->
-        <tr class="week-row"><td colspan="5">Week 5 — Pipelining</td></tr>
-        <tr><td>Mon May 5</td><td class="lec-num">12</td><td>Pipelining overview; hazards</td><td>P&amp;H §4.6–4.7</td><td><a href="#">slides</a></td></tr>
-        <tr><td>Wed May 7</td><td class="lec-num">13</td><td>Data hazards; forwarding paths</td><td>P&amp;H §4.8</td><td><a href="#">slides</a></td></tr>
-        <tr><td>Fri May 9</td><td class="lec-num">14</td><td>Control hazards; branch prediction</td><td>P&amp;H §4.9–4.10</td><td><a href="#">slides</a></td></tr>
-        <!-- Week 6 -->
-        <tr class="week-row"><td colspan="5">Week 6 — Memory hierarchy I</td></tr>
-        <tr><td>Mon May 12</td><td class="lec-num">15</td><td>Memory technology; locality principle</td><td>P&amp;H §5.1–5.2</td><td><span class="badge badge-hw">HW 2 due</span></td></tr>
-        <tr><td>Wed May 14</td><td class="lec-num">16</td><td>Cache basics; direct-mapped caches</td><td>P&amp;H §5.3</td><td><span class="badge badge-hw">HW 3 out</span></td></tr>
-        <tr><td>Fri May 16</td><td class="lec-num">17</td><td>Set-associative &amp; fully-associative caches</td><td>P&amp;H §5.4</td><td><a href="#">slides</a></td></tr>
-        <!-- Week 7 -->
-        <tr class="week-row"><td colspan="5">Week 7 — Memory hierarchy II</td></tr>
-        <tr><td>Mon May 19</td><td class="lec-num">18</td><td>Cache performance; miss penalties</td><td>P&amp;H §5.5–5.6</td><td><a href="#">slides</a></td></tr>
-        <tr><td>Wed May 21</td><td class="lec-num">19</td><td>Virtual memory; TLBs</td><td>P&amp;H §5.7–5.8</td><td><a href="#">slides</a></td></tr>
-        <tr class="exam-row"><td>Fri May 23</td><td class="lec-num">—</td><td><strong>Midterm 2</strong> — covers weeks 4–7</td><td>—</td><td><span class="badge badge-exam">Exam</span></td></tr>
-        <!-- Week 8 -->
-        <tr class="week-row"><td colspan="5">Week 8 — I/O &amp; storage</td></tr>
-        <tr class="holiday-row"><td>Mon May 26</td><td class="lec-num">—</td><td>No class — Memorial Day</td><td>—</td><td><span class="badge badge-hol">Holiday</span></td></tr>
-        <tr><td>Wed May 28</td><td class="lec-num">20</td><td>I/O devices; interrupts &amp; DMA</td><td>P&amp;H §6.1–6.4</td><td><span class="badge badge-hw">HW 3 due</span></td></tr>
-        <tr><td>Fri May 30</td><td class="lec-num">21</td><td>Storage systems; reliability &amp; RAID</td><td>P&amp;H §6.5–6.7</td><td><span class="badge badge-hw">HW 4 out</span></td></tr>
-        <!-- Week 9 -->
-        <tr class="week-row"><td colspan="5">Week 9 — Parallelism &amp; advanced topics</td></tr>
-        <tr><td>Mon Jun 2</td><td class="lec-num">22</td><td>Parallel processors; Flynn's taxonomy</td><td>P&amp;H §7.1–7.3</td><td><a href="#">slides</a></td></tr>
-        <tr><td>Wed Jun 4</td><td class="lec-num">23</td><td>Shared memory; coherence basics</td><td>P&amp;H §7.4–7.6</td><td><a href="#">slides</a></td></tr>
-        <tr><td>Fri Jun 6</td><td class="lec-num">24</td><td>GPUs &amp; domain-specific accelerators</td><td>P&amp;H §7.7</td><td><a href="#">slides</a></td></tr>
-        <!-- Week 10 -->
-        <tr class="week-row"><td colspan="5">Week 10 — Wrap-up</td></tr>
-        <tr><td>Mon Jun 9</td><td class="lec-num">25</td><td>Performance analysis; Amdahl's Law</td><td>P&amp;H §1.6–1.11</td><td><span class="badge badge-hw">HW 4 due</span></td></tr>
-        <tr><td>Wed Jun 11</td><td class="lec-num">26</td><td>Course review &amp; final exam prep</td><td>—</td><td><a href="#">review slides</a></td></tr>
-        <tr class="holiday-row"><td>Fri Jun 13</td><td class="lec-num">—</td><td>No lecture — study day</td><td>—</td><td></td></tr>
-        <!-- Finals -->
-        <tr class="week-row"><td colspan="5">Finals week</td></tr>
-        <tr class="exam-row"><td>Sat Jun 14</td><td class="lec-num">—</td><td><strong>Final exam</strong> — 11:30am–2:29pm, CSE 1202</td><td>—</td><td><span class="badge badge-exam">Exam</span></td></tr>
+
+        <!-- Part 0 -->
+        <tr class="part-row">
+          <td colspan="2">Part 0 — Welcome!</td>
+          <td colspan="3">
+            Slides:
+            <a href="https://patpannuto.com/classes/2020/fall/cse141/2020-10-02-cse141-intro.pptx">pptx</a>
+            <a href="https://patpannuto.com/classes/2020/fall/cse141/2020-10-02-cse141-intro.pdf">pdf</a>
+          </td>
+        </tr>
+        <tr>
+          <td>Mon Apr 7</td><td class="lec-num">1</td>
+          <td><div class="topic-main">Introduction and motivation</div></td>
+          <td class="reading">—</td>
+          <td><div class="slide-links"><a href="https://patpannuto.com/classes/2020/fall/cse141/2020-10-02-cse141-intro.pdf">slides</a></div></td>
+        </tr>
+
+        <!-- Part I: ISA -->
+        <tr class="part-row">
+          <td colspan="2">Part I — Instruction Set Architecture</td>
+          <td colspan="3">
+            Slides:
+            <a href="https://patpannuto.com/classes/2020/fall/cse141/cse141-fa20-ISA.pptx">pptx</a>
+            <a href="https://patpannuto.com/classes/2020/fall/cse141/cse141-fa20-ISA.pdf">pdf</a>
+            &nbsp;·&nbsp;
+            <a href="https://booksite.elsevier.com/9780124077263/downloads/COD_5e_Greencard.pdf">MIPS green card</a>
+            <a href="https://patpannuto.com/classes/2020/fall/cse141/GreenCardOld.pdf">simpler ref</a>
+          </td>
+        </tr>
+        <tr>
+          <td>Wed Apr 9</td><td class="lec-num">2</td>
+          <td><div class="topic-main">What computing looks like; intro to ISA design</div></td>
+          <td class="reading">Skim 1.1, <span class="deep">Read 1.2–1.3</span></td>
+          <td><div class="slide-links"><a href="https://patpannuto.com/classes/2020/fall/cse141/cse141-fa20-ISA_2020-10-05.pdf" class="annot">annotated</a></div></td>
+        </tr>
+        <tr>
+          <td>Fri Apr 11</td><td class="lec-num">3</td>
+          <td><div class="topic-main">ISA design, memory, basic ops</div></td>
+          <td class="reading">Skim 2.1–2.2, <span class="deep">Read 2.3–2.5</span>, Skim 2.10</td>
+          <td><div class="slide-links"><a href="https://patpannuto.com/classes/2020/fall/cse141/cse141-fa20-ISA_2020-10-07.pdf" class="annot">annotated</a></div></td>
+        </tr>
+        <tr>
+          <td>Mon Apr 14</td><td class="lec-num">4</td>
+          <td><div class="topic-main">Control flow; RISC vs CISC</div></td>
+          <td class="reading"><span class="deep">Read 2.6–2.8</span>, Skim 2.16–2.18, <span class="deep">Read 2.19</span></td>
+          <td><div class="slide-links"><a href="https://patpannuto.com/classes/2020/fall/cse141/cse141-fa20-ISA_2020-10-09.pdf" class="annot">annotated</a></div></td>
+        </tr>
+
+        <!-- Part II: Performance -->
+        <tr class="part-row">
+          <td colspan="2">Part II — Computer System Performance</td>
+          <td colspan="3">
+            Slides:
+            <a href="https://patpannuto.com/classes/2020/fall/cse141/cse141-fa20-Performance.pptx">pptx</a>
+            <a href="https://patpannuto.com/classes/2020/fall/cse141/cse141-fa20-Performance.pdf">pdf</a>
+          </td>
+        </tr>
+        <tr>
+          <td>Wed Apr 16</td><td class="lec-num">5</td>
+          <td><div class="topic-main">Defining performance, time; Amdahl's Law</div></td>
+          <td class="reading">Skim 1.5, <span class="deep">Read 1.6</span>, Skim 1.7–1.8 &mdash; Skim 1.9, <span class="deep">Read 1.10</span>, Skim 2.13</td>
+          <td><div class="slide-links"><a href="https://patpannuto.com/classes/2020/fall/cse141/cse141-fa20-Performance_2020-10-14.pdf" class="annot">annotated</a></div></td>
+        </tr>
+
+        <!-- Part III: Single Cycle -->
+        <tr class="part-row">
+          <td colspan="2">Part III — The Single-Cycle Machine</td>
+          <td colspan="3">
+            Slides:
+            <a href="https://patpannuto.com/classes/2020/fall/cse141/cse141-fa20-SingleCycleMachine.pptx">pptx</a>
+            <a href="https://patpannuto.com/classes/2020/fall/cse141/cse141-fa20-SingleCycleMachine.pdf">pdf</a>
+          </td>
+        </tr>
+        <tr>
+          <td>Fri Apr 18</td><td class="lec-num">6</td>
+          <td><div class="topic-main">Execute units (ALUs), building blocks, introducing organization</div></td>
+          <td class="reading">Skim 3.1, <span class="deep">Read 3.2</span>, Skim 3.3–3.4</td>
+          <td><div class="slide-links">
+            <a href="https://patpannuto.com/classes/2020/fall/cse141/cse141-fa20-SingleCycleMachine_2020-10-16.pdf" class="annot">annotated</a>
+            <span class="badge badge-hw">HW 1 out</span>
+          </div></td>
+        </tr>
+        <tr>
+          <td>Mon Apr 21</td><td class="lec-num">7</td>
+          <td><div class="topic-main">Datapaths and control paths</div></td>
+          <td class="reading"><span class="deep">Read 4.1–4.3</span>, Skim 4.4</td>
+          <td><div class="slide-links"><a href="https://patpannuto.com/classes/2020/fall/cse141/cse141-fa20-SingleCycleMachine_2020-10-19.pdf" class="annot">annotated</a></div></td>
+        </tr>
+        <tr>
+          <td>Wed Apr 23</td><td class="lec-num">8</td>
+          <td><div class="topic-main">Completing the machine; multicycle machines</div></td>
+          <td class="reading"><span class="deep">Read 4.4</span> (long — read carefully)</td>
+          <td><div class="slide-links"><a href="https://patpannuto.com/classes/2020/fall/cse141/cse141-fa20-SingleCycleMachine_2020-10-21.pdf" class="annot">annotated</a></div></td>
+        </tr>
+
+        <!-- Part IV: Pipelines -->
+        <tr class="part-row">
+          <td colspan="2">Part IV — Pipelines</td>
+          <td colspan="3">
+            Slides:
+            <a href="https://patpannuto.com/classes/2020/fall/cse141/cse141-fa20-Pipelines.pptx">pptx</a>
+            <a href="https://patpannuto.com/classes/2020/fall/cse141/cse141-fa20-Pipelines.pdf">pdf</a>
+          </td>
+        </tr>
+        <tr>
+          <td>Fri Apr 25</td><td class="lec-num">9</td>
+          <td><div class="topic-main">Introducing pipelines</div></td>
+          <td class="reading"><span class="deep">Read 4.5</span> until hazards (pp. 272–277); skim rest of 4.5</td>
+          <td><div class="slide-links">
+            <a href="https://patpannuto.com/classes/2020/fall/cse141/cse141-fa20-Pipelines_2020-10-23.pdf" class="annot">annotated</a>
+            <span class="badge badge-hw">HW 1 due</span>
+          </div></td>
+        </tr>
+        <tr>
+          <td>Mon Apr 28</td><td class="lec-num">10</td>
+          <td><div class="topic-main">Control in pipelines; intro hazards</div></td>
+          <td class="reading"><span class="deep">Read 4.6</span></td>
+          <td><div class="slide-links">
+            <a href="https://patpannuto.com/classes/2020/fall/cse141/cse141-fa20-Pipelines_2020-10-26.pdf" class="annot">annotated</a>
+            <span class="badge badge-hw">HW 2 out</span>
+          </div></td>
+        </tr>
+        <tr>
+          <td>Wed Apr 30</td><td class="lec-num">11</td>
+          <td><div class="topic-main">Data hazards; stalls; forwarding</div></td>
+          <td class="reading"><span class="deep">Read 4.5</span> hazards &amp; data hazards (pp. 277–281); <span class="deep">Read 4.7</span></td>
+          <td><div class="slide-links"><a href="https://patpannuto.com/classes/2020/fall/cse141/cse141-fa20-Pipelines_2020-10-28.pdf" class="annot">annotated</a></div></td>
+        </tr>
+        <tr>
+          <td>Fri May 2</td><td class="lec-num">12</td>
+          <td><div class="topic-main">Finish data hazards; control hazards</div></td>
+          <td class="reading"><span class="deep">Read 4.5</span> control hazards (pp. 281–286); <span class="deep">Read 4.8</span> until prediction (pp. 316–320)</td>
+          <td><div class="slide-links"><a href="https://patpannuto.com/classes/2020/fall/cse141/cse141-fa20-Pipelines_2020-10-30.pdf" class="annot">annotated</a></div></td>
+        </tr>
+        <tr>
+          <td>Mon May 5</td><td class="lec-num">13</td>
+          <td><div class="topic-main">Branch predictors; wrapping up pipelines</div></td>
+          <td class="reading"><span class="deep">Read</span> rest of 4.8 (pp. 321–325)</td>
+          <td><div class="slide-links">
+            <a href="https://patpannuto.com/classes/2020/fall/cse141/cse141-fa20-Pipelines_2020-11-02.pdf" class="annot">annotated</a>
+            <span class="badge badge-hw">HW 2 due</span>
+          </div></td>
+        </tr>
+        <tr>
+          <td>Wed May 7</td><td class="lec-num">14</td>
+          <td><div class="topic-main">Control hazards; intro branch predictors</div></td>
+          <td class="reading">(reading slightly ahead of lecture)</td>
+          <td><div class="slide-links">
+            <a href="https://patpannuto.com/classes/2020/fall/cse141/cse141-fa20-Pipelines_2020-11-04.pdf" class="annot">annotated</a>
+            <span class="badge badge-hw">HW 3 out</span>
+          </div></td>
+        </tr>
+        <!-- Midterm -->
+        <tr class="review-row">
+          <td>Thu May 8</td><td class="lec-num">—</td>
+          <td><div class="topic-main">Exam review session (open to all, optional)</div></td>
+          <td class="reading">—</td>
+          <td><div class="slide-links"><a href="https://patpannuto.com/classes/2020/fall/cse141/CSE141_FA20_MidtermReview.pdf">review notes</a></div></td>
+        </tr>
+        <tr class="exam-row">
+          <td>Fri May 9</td><td class="lec-num">—</td>
+          <td>
+            <div class="topic-main"><strong>Midterm Exam</strong></div>
+            <div class="topic-sub">In class, 50 min. Closed book; one double-sided 8.5×11" note sheet.</div>
+          </td>
+          <td class="reading">—</td>
+          <td><span class="badge badge-exam">Exam</span></td>
+        </tr>
+        <tr>
+          <td>Mon May 12</td><td class="lec-num">15</td>
+          <td><div class="topic-main">Branch delay slots; advanced branch predictors</div></td>
+          <td class="reading">(reading slightly ahead of lecture)</td>
+          <td><div class="slide-links"><a href="https://patpannuto.com/classes/2020/fall/cse141/cse141-fa20-Pipelines_2020-11-06.pdf" class="annot">annotated</a></div></td>
+        </tr>
+        <tr>
+          <td>Wed May 14</td><td class="lec-num">16</td>
+          <td><div class="topic-main">Advanced branch predictors (cont.)</div></td>
+          <td class="reading">(reading slightly ahead of lecture)</td>
+          <td><div class="slide-links"><a href="https://patpannuto.com/classes/2020/fall/cse141/cse141-fa20-Pipelines_2020-11-13.pdf" class="annot">annotated</a></div></td>
+        </tr>
+        <tr>
+          <td>Fri May 16</td><td class="lec-num">17</td>
+          <td><div class="topic-main">Even more advanced branch predictors</div></td>
+          <td class="reading">(reading slightly ahead of lecture)</td>
+          <td><div class="slide-links">
+            <a href="https://patpannuto.com/classes/2020/fall/cse141/cse141-fa20-Pipelines_2020-11-16.pdf" class="annot">annotated</a>
+            <span class="badge badge-hw">HW 3 due</span>
+          </div></td>
+        </tr>
+
+        <!-- Part V: Advanced Pipelines -->
+        <tr class="part-row">
+          <td colspan="2">Part V — Advanced Pipelines</td>
+          <td colspan="3">
+            Slides:
+            <a href="https://patpannuto.com/classes/2020/fall/cse141/cse141-fa20-AdvancedPipelines.pptx">pptx</a>
+            <a href="https://patpannuto.com/classes/2020/fall/cse141/cse141-fa20-AdvancedPipelines.pdf">pdf</a>
+          </td>
+        </tr>
+        <tr>
+          <td>Mon May 19</td><td class="lec-num">18</td>
+          <td><div class="topic-main">Exceptions and interrupts</div></td>
+          <td class="reading"><span class="deep">Read 4.9</span></td>
+          <td><div class="slide-links">
+            <a href="https://patpannuto.com/classes/2020/fall/cse141/cse141-fa20-AdvancedPipelines_2020-11-20.pdf" class="annot">annotated</a>
+            <span class="badge badge-hw">HW 4 out</span>
+          </div></td>
+        </tr>
+        <tr>
+          <td>Wed May 21</td><td class="lec-num">19</td>
+          <td><div class="topic-main">Pipelines in modern machines</div></td>
+          <td class="reading">(no reading)</td>
+          <td><div class="slide-links"><a href="https://patpannuto.com/classes/2020/fall/cse141/cse141-fa20-AdvancedPipelines_2020-11-23.pdf" class="annot">annotated</a></div></td>
+        </tr>
+        <tr>
+          <td>Fri May 23</td><td class="lec-num">20</td>
+          <td><div class="topic-main">Pipelines in modern machines (cont.)</div></td>
+          <td class="reading">(no reading)</td>
+          <td><div class="slide-links"><a href="https://patpannuto.com/classes/2020/fall/cse141/cse141-fa20-AdvancedPipelines_2020-11-25.pdf" class="annot">annotated</a></div></td>
+        </tr>
+
+        <!-- Part VI: Caches -->
+        <tr class="part-row">
+          <td colspan="2">Part VI — Caches &amp; Memory</td>
+          <td colspan="3">
+            Slides:
+            <a href="https://patpannuto.com/classes/2020/fall/cse141/cse141-fa20-MemoryAndCaches.pptx">pptx</a>
+            <a href="https://patpannuto.com/classes/2020/fall/cse141/cse141-fa20-MemoryAndCaches.pdf">pdf</a>
+          </td>
+        </tr>
+        <tr class="holiday-row">
+          <td>Mon May 26</td><td class="lec-num">—</td>
+          <td>No class — Memorial Day</td>
+          <td>—</td>
+          <td><span class="badge badge-hol">Holiday</span></td>
+        </tr>
+        <tr>
+          <td>Wed May 28</td><td class="lec-num">21</td>
+          <td><div class="topic-main">Introducing caches</div></td>
+          <td class="reading"><span class="deep">Read 5.1</span>; Skim 5.2</td>
+          <td><div class="slide-links">
+            <a href="https://patpannuto.com/classes/2020/fall/cse141/cse141-fa20-MemoryAndCaches_2020-11-30.pdf" class="annot">annotated</a>
+            <span class="badge badge-hw">HW 4 due</span>
+          </div></td>
+        </tr>
+        <tr>
+          <td>Fri May 30</td><td class="lec-num">22</td>
+          <td><div class="topic-main">Cache designs &amp; tradeoffs</div></td>
+          <td class="reading"><span class="deep">Read 5.3</span></td>
+          <td><div class="slide-links">
+            <a href="https://patpannuto.com/classes/2020/fall/cse141/cse141-fa20-MemoryAndCaches_2020-12-02.pdf" class="annot">annotated</a>
+            <span class="badge badge-hw">HW 5 out</span>
+          </div></td>
+        </tr>
+        <tr>
+          <td>Mon Jun 2</td><td class="lec-num">23</td>
+          <td><div class="topic-main">Cache performance</div></td>
+          <td class="reading"><span class="deep">Read 5.4</span> (focus on first ~half)</td>
+          <td><div class="slide-links"><a href="https://patpannuto.com/classes/2020/fall/cse141/cse141-fa20-MemoryAndCaches_2020-12-04.pdf" class="annot">annotated</a></div></td>
+        </tr>
+        <tr>
+          <td>Wed Jun 4</td><td class="lec-num">24</td>
+          <td><div class="topic-main">Advanced caches</div></td>
+          <td class="reading"><span class="deep">Read 5.8</span>; Skim 5.13 if interested</td>
+          <td><div class="slide-links">
+            <a href="https://patpannuto.com/classes/2020/fall/cse141/cse141-fa20-MemoryAndCaches_2020-12-07.pdf" class="annot">annotated</a>
+            <span class="badge badge-hw">HW 5 due</span>
+          </div></td>
+        </tr>
+        <tr>
+          <td>Fri Jun 6</td><td class="lec-num">25</td>
+          <td><div class="topic-main">Virtual memory</div></td>
+          <td class="reading"><span class="deep">Read 5.7</span> (focus on first ~half)</td>
+          <td><div class="slide-links"><a href="https://patpannuto.com/classes/2020/fall/cse141/cse141-fa20-MemoryAndCaches_2020-12-09.pdf" class="annot">annotated</a></div></td>
+        </tr>
+
+        <!-- Wrap-up / Final -->
+        <tr class="part-row">
+          <td colspan="2">Wrap-up &amp; Finals</td>
+          <td colspan="3"></td>
+        </tr>
+        <tr>
+          <td>Mon Jun 9</td><td class="lec-num">26</td>
+          <td><div class="topic-main">Catch-up / additional topics TBD</div></td>
+          <td class="reading">TBD</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Wed Jun 11</td><td class="lec-num">27</td>
+          <td><div class="topic-main">Catch-up / additional topics TBD</div></td>
+          <td class="reading">TBD</td>
+          <td></td>
+        </tr>
+        <tr class="review-row">
+          <td>Fri Jun 13</td><td class="lec-num">—</td>
+          <td><div class="topic-main">Final exam review (open to all, optional)</div></td>
+          <td>—</td>
+          <td></td>
+        </tr>
+        <tr class="exam-row">
+          <td>Sat Jun 14</td><td class="lec-num">—</td>
+          <td>
+            <div class="topic-main"><strong>Final Exam</strong> — 11:30am–2:29pm, CSE 1202</div>
+            <div class="topic-sub">Cumulative. Two double-sided note sheets allowed.</div>
+          </td>
+          <td>—</td>
+          <td><span class="badge badge-exam">Final Exam</span></td>
+        </tr>
       </tbody>
     </table>
     </div>
   </section>
 
-  <!-- ══════════════ SYLLABUS ══════════════ -->
+  <!-- SYLLABUS -->
   <section id="syllabus" class="tab">
     <div class="two-col">
       <div>
-        <div class="sec-title">Course policies</div>
+        <div class="disclaimer">The details in this syllabus may change as the course progresses. Updates will be announced on Piazza.</div>
 
+        <div class="sec-title">Participation (Mini-Quizzes) — 5%</div>
         <div class="prose">
-          <p><strong>Attendance.</strong> Lectures are not formally recorded. You are responsible for all material covered in class. Collaboration on understanding lecture content is encouraged.</p>
-          <p><strong>Homework.</strong> Four problem-set homeworks, submitted via Gradescope (PDF only, show all work). You may discuss problems with classmates but must write up solutions independently. Late work accepted up to 48 hours with a 20% penalty; no credit after 48 hours.</p>
-          <p><strong>Exams.</strong> Two in-class midterms and one final. All exams are closed-book; one double-sided 8.5×11" note sheet is allowed per midterm, two for the final. If you miss a midterm due to a documented emergency, the weight will be redistributed to the final.</p>
-          <p><strong>Academic integrity.</strong> All submitted work must be your own. Sharing solutions, using AI-generated answers, or copying from any source constitutes a violation and will be reported to the Academic Integrity Office.</p>
-          <p><strong>Regrades.</strong> Submit regrade requests through Gradescope within one week of grades being released. Describe specifically which rubric item you believe was applied incorrectly.</p>
+          <p>During lectures we will have interactive Q&amp;A segments (polls). In-lecture polls are <strong>not</strong> graded for correctness or attendance. At the end of each week, all poll questions are collected into a mini-quiz on Canvas, due by midnight the following Tuesday. <strong>Graded for completion, not correctness.</strong></p>
+          <p><strong>Late policy:</strong> No extensions. Two bonus quizzes (before midterm, before final) can make up a missed week; they will not count for extra credit.</p>
         </div>
 
-        <div class="sec-title" style="margin-top:1.75rem;">Grading breakdown</div>
-        <table class="syl">
-          <thead>
-            <tr><th>Component</th><th>Weight</th><th>Notes</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>Homework (4 × equal weight)</td><td>25%</td><td>Late policy: −20%/day, max 48 hrs</td></tr>
-            <tr><td>Midterm 1</td><td>20%</td><td>Fri Apr 25, in class</td></tr>
-            <tr><td>Midterm 2</td><td>20%</td><td>Fri May 23, in class</td></tr>
-            <tr><td>Final exam</td><td>30%</td><td>Sat Jun 14, 11:30am–2:29pm</td></tr>
-            <tr><td>Participation</td><td>5%</td><td>Piazza, section attendance</td></tr>
-          </tbody>
+        <div class="sec-title" style="margin-top:1.5rem;">Homework — 20%</div>
+        <div class="prose">
+          <p>Longer-form assignments to test individual understanding. Discuss in groups, but write up solutions alone. Submit via Gradescope (PDF). Regrade requests via Gradescope within one week of grades being returned.</p>
+          <p>Generally released Thursday, due the following Thursday at midnight. Expect ~7–8 assignments, with exceptions around exams and holidays.</p>
+          <p><strong>Late policy:</strong> Accepted any time before the final exam at 50% of earned points. Not eligible for regrades. Must clearly show your own work.</p>
+        </div>
+
+        <div class="sec-title" style="margin-top:1.5rem;">Midterm — 30%</div>
+        <div class="prose">
+          <p>One in-class midterm on <strong>Friday, May 9</strong>. Closed-book; one double-sided 8.5×11" note sheet. 50 minutes.</p>
+        </div>
+
+        <div class="sec-title" style="margin-top:1.5rem;">Final Exam — 45%</div>
+        <div class="prose">
+          <p>Cumulative. Registrar-assigned: <strong>Saturday, June 14, 11:30am–2:29pm, CSE 1202</strong>. Two double-sided note sheets. If Saturday is an absolute conflict, contact the instructor well in advance.</p>
+        </div>
+
+        <div class="sec-title" style="margin-top:1.5rem;">Final grades</div>
+        <p style="font-size:13px; color:var(--text-muted); margin-bottom:8px;">Range notation: [90, 93) means 90 is included, 93 is not.</p>
+        <table class="grades">
+          <tr><th>A+</th><th>A</th><th>A−</th><th>B+</th><th>B</th><th>B−</th><th>C+</th><th>C</th><th>C−</th><th>D</th><th>F</th></tr>
+          <tr><td>&gt;96.7</td><td>[93,96.7)</td><td>[90,93)</td><td>[86.7,90)</td><td>[83.3,86.7)</td><td>[80,83.3)</td><td>[76.7,80)</td><td>[73.3,76.7)</td><td>[70,73.3)</td><td>[60,70)</td><td>[0,60)</td></tr>
         </table>
+
+        <div class="sec-title" style="margin-top:1.5rem;">Academic integrity</div>
+        <div class="prose">
+          <p>Cheating will be taken seriously. <strong>Not cheating:</strong> discussing homework in groups (writeups done separately). <strong>Cheating:</strong> using someone's completed work, solutions from the web or prior offerings, or any assistance during an exam.</p>
+          <p><strong>Regret policy:</strong> 24-hour self-report window via <a href="https://docs.google.com/forms/d/e/1FAIpQLSex1VufqLAAgVeYqD6VtQ_rWr_bt8HbycyNDtNT11KygwIaoA/viewform">this form</a>. Timely self-reports typically result in a zero on the assignment only. Non-reported violations face much more severe consequences.</p>
+        </div>
       </div>
 
       <div class="sidebar">
         <div class="s-card">
           <div class="s-card-head">Accommodations</div>
-          <div class="s-card-body">
-            <p>Students requiring exam accommodations should contact the Office for Students with Disabilities (OSD) and submit their authorization letter to the instructor at least one week before the first exam.</p>
-          </div>
+          <div class="s-card-body"><p>Contact OSD and submit your authorization letter to the instructor at least one week before the first exam.</p></div>
         </div>
         <div class="s-card">
           <div class="s-card-head">Communication</div>
           <div class="s-card-body">
-            <p><strong>Piazza</strong> — All course Q&amp;A. Check before emailing; most questions are already answered.</p>
-            <p><strong>Email</strong> — Private matters only. Include "CSE 141" in the subject line. Allow 48 hours for a response.</p>
+            <p><strong>Piazza</strong> — All course Q&amp;A. Check before emailing.</p>
+            <p><strong>Email</strong> — Private matters only. Include "CSE 141" in subject. Allow 48 hours.</p>
+          </div>
+        </div>
+        <div class="s-card">
+          <div class="s-card-head">Textbook</div>
+          <div class="s-card-body">
+            <p><em>Computer Organization and Design MIPS Edition</em>, 5th Ed., Patterson &amp; Hennessy.</p>
+            <p>ISBN-13: 978-0124077263</p>
+            <p>On 2-hour reserve at Geisel Library.</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ══════════════ ASSIGNMENTS ══════════════ -->
+  <!-- ASSIGNMENTS -->
   <section id="assignments" class="tab">
-    <p style="font-size:13px; color:#888; margin-bottom:1rem;">All assignments submitted via <a href="#">Gradescope</a>. PDF only. Show all work for full credit.</p>
-
+    <p style="font-size:13px; color:var(--text-muted); margin-bottom:1rem;">Submitted via <a href="#">Gradescope</a> (through Canvas). PDF only. Show all work.</p>
     <div class="sec-title">Homeworks</div>
     <div class="hw-list">
       <div class="hw-item">
-        <div>
-          <div class="hw-title">Homework 1 — ISA &amp; instruction encoding</div>
-          <div class="hw-meta">Out: Fri Apr 18 &nbsp;·&nbsp; Due: Mon Apr 28, 11:59pm</div>
-        </div>
-        <div class="hw-right">
-          <span class="badge badge-out">Released</span>
-        </div>
+        <div><div class="hw-title">Homework 1 — ISA &amp; instruction encoding</div><div class="hw-meta">Out: Fri Apr 18 &nbsp;·&nbsp; Due: Thu Apr 24, midnight</div></div>
+        <span class="badge badge-out">Released</span>
       </div>
       <div class="hw-item">
-        <div>
-          <div class="hw-title">Homework 2 — Datapath &amp; control</div>
-          <div class="hw-meta">Out: Fri May 2 &nbsp;·&nbsp; Due: Mon May 12, 11:59pm</div>
-        </div>
-        <div class="hw-right">
-          <span class="badge badge-hol">Upcoming</span>
-        </div>
+        <div><div class="hw-title">Homework 2 — Datapath &amp; control</div><div class="hw-meta">Out: Mon Apr 28 &nbsp;·&nbsp; Due: Thu May 1, midnight</div></div>
+        <span class="badge badge-hol" style="color:var(--text-muted);">Upcoming</span>
       </div>
       <div class="hw-item">
-        <div>
-          <div class="hw-title">Homework 3 — Caches &amp; memory hierarchy</div>
-          <div class="hw-meta">Out: Wed May 14 &nbsp;·&nbsp; Due: Wed May 28, 11:59pm</div>
-        </div>
-        <div class="hw-right">
-          <span class="badge badge-hol">Upcoming</span>
-        </div>
+        <div><div class="hw-title">Homework 3 — Pipelining</div><div class="hw-meta">Out: Wed May 7 &nbsp;·&nbsp; Due: Thu May 15, midnight</div></div>
+        <span class="badge badge-hol" style="color:var(--text-muted);">Upcoming</span>
       </div>
       <div class="hw-item">
-        <div>
-          <div class="hw-title">Homework 4 — Parallelism &amp; performance</div>
-          <div class="hw-meta">Out: Fri May 30 &nbsp;·&nbsp; Due: Mon Jun 9, 11:59pm</div>
-        </div>
-        <div class="hw-right">
-          <span class="badge badge-hol">Upcoming</span>
-        </div>
+        <div><div class="hw-title">Homework 4 — Advanced pipelines &amp; exceptions</div><div class="hw-meta">Out: Mon May 19 &nbsp;·&nbsp; Due: Wed May 28, midnight</div></div>
+        <span class="badge badge-hol" style="color:var(--text-muted);">Upcoming</span>
+      </div>
+      <div class="hw-item">
+        <div><div class="hw-title">Homework 5 — Caches &amp; memory hierarchy</div><div class="hw-meta">Out: Fri May 30 &nbsp;·&nbsp; Due: Wed Jun 4, midnight</div></div>
+        <span class="badge badge-hol" style="color:var(--text-muted);">Upcoming</span>
       </div>
     </div>
 
     <div class="sec-title" style="margin-top:1.75rem;">Exams</div>
-    <p style="font-size:13px; color:#888; margin-bottom:0.75rem;">Solutions posted after grades are finalized.</p>
     <div class="hw-list">
       <div class="hw-item">
-        <div>
-          <div class="hw-title">Midterm 1</div>
-          <div class="hw-meta">Fri Apr 25, in class</div>
-        </div>
-        <div class="hw-right"><a href="#" style="font-size:13px;">exam PDF</a></div>
+        <div><div class="hw-title">Midterm</div><div class="hw-meta">Fri May 9, in class</div></div>
+        <span style="font-size:12px;color:var(--text-faint);">not yet posted</span>
       </div>
       <div class="hw-item">
-        <div>
-          <div class="hw-title">Midterm 2</div>
-          <div class="hw-meta">Fri May 23, in class</div>
-        </div>
-        <div class="hw-right"><span style="font-size:12px; color:#aaa;">not yet posted</span></div>
+        <div><div class="hw-title">Final Exam</div><div class="hw-meta">Sat Jun 14, 11:30am–2:29pm, CSE 1202</div></div>
+        <span style="font-size:12px;color:var(--text-faint);">not yet posted</span>
       </div>
-      <div class="hw-item">
-        <div>
-          <div class="hw-title">Final exam</div>
-          <div class="hw-meta">Sat Jun 14, 11:30am–2:29pm, CSE 1202</div>
-        </div>
-        <div class="hw-right"><span style="font-size:12px; color:#aaa;">not yet posted</span></div>
-      </div>
+    </div>
+    <div class="notice" style="margin-top:1.25rem;">
+      Reference exams from Prof. Pannuto's Fall 2020 offering: <a href="https://patpannuto.com/classes/2020/fall/cse141/">patpannuto.com/classes/2020/fall/cse141/</a>
     </div>
   </section>
 
-  <!-- ══════════════ STAFF ══════════════ -->
+  <!-- STAFF -->
   <section id="staff" class="tab">
     <div class="sec-title">Instructor &amp; teaching assistants</div>
     <div class="staff-grid">
@@ -651,28 +683,29 @@
     </div>
 
     <div class="sec-title" style="margin-top:1.75rem;">Office hours</div>
-    <p style="font-size:13px; color:#888; margin-bottom:0;">All office hours are in-person unless noted. Join the <a href="#">EdStem queue</a> before arriving. Hours may shift around exams — check Piazza for updates.</p>
+    <p style="font-size:13px; color:var(--text-muted);">All office hours in-person unless noted. Hours may shift around exams — check Canvas for updates.</p>
     <table class="oh">
-      <thead>
-        <tr><th>Who</th><th>Day</th><th>Time</th><th>Location</th></tr>
-      </thead>
+      <thead><tr><th>Who</th><th>Day</th><th>Time</th><th>Location</th></tr></thead>
       <tbody>
         <tr><td>Instructor</td><td>Tuesday</td><td>2:00–3:30pm</td><td>CSE 3134</td></tr>
         <tr><td>Instructor</td><td>Thursday</td><td>10:00–11:00am</td><td>CSE 3134</td></tr>
-        <tr><td>TA (grad)</td><td>Monday</td><td>3:00–4:30pm</td><td>CSE B225 (basement)</td></tr>
-        <tr><td>TA (grad)</td><td>Wednesday</td><td>1:00–2:30pm</td><td>CSE B225 (basement)</td></tr>
-        <tr><td>Tutor</td><td>Friday</td><td>11:00am–12:30pm</td><td>CSE B225 (basement)</td></tr>
+        <tr><td>TA (grad)</td><td>Monday</td><td>3:00–4:30pm</td><td>CSE B225</td></tr>
+        <tr><td>TA (grad)</td><td>Wednesday</td><td>1:00–2:30pm</td><td>CSE B225</td></tr>
+        <tr><td>Tutor</td><td>Friday</td><td>11:00am–12:30pm</td><td>CSE B225</td></tr>
         <tr><td>Tutor</td><td>Sunday</td><td>4:00–5:30pm</td><td>Zoom (link on Canvas)</td></tr>
       </tbody>
     </table>
   </section>
 
   <footer class="site-footer">
-    CSE 141 &nbsp;·&nbsp; Spring 2025 &nbsp;·&nbsp; UC San Diego
+    <div>CSE 141 &nbsp;·&nbsp; Spring 2025 &nbsp;·&nbsp; UC San Diego</div>
+    <div class="cc-note">
+      Lecture slides courtesy of <a href="https://patpannuto.com/classes/2020/fall/cse141/">Prof. Pat Pannuto (Fall 2020)</a>,
+      used under <a href="http://creativecommons.org/licenses/by-nc-nd/4.0/">CC BY-NC-ND 4.0</a>.
+    </div>
   </footer>
 
 </div>
-
 <script>
   function show(id, btn) {
     document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
